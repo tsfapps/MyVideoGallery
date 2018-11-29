@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".t_activity.DetailActivity">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+<android.support.v7.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!--<ImageView-->
+            <!--android:id="@+id/iv_det_img"-->
+            <!--android:src="@mipmap/ic_launcher"-->
+            <!--android:scaleType="centerCrop"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="250dp" />-->
+        <VideoView
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:id="@+id/video"/>
+        <TextView
+            android:background="#000"
+            android:id="@+id/tv_title_detail"
+            android:padding="10dp"
+            android:textSize="16sp"
+            android:textColor="#f9c538"
+            android:textStyle="bold"
+            android:text="@string/video_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:background="#fff"
+            android:id="@+id/tv_des_detail"
+            android:padding="10dp"
+            android:textSize="14sp"
+            android:textColor="#0297ae"
+            android:text="@string/vid_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>
+    </RelativeLayout>
+</ScrollView>
+</RelativeLayout>
