@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements VideoAdapter.onVi
         setContentView(R.layout.activity_main);
 
         recyclerView = findViewById(R.id.rv_mainList);
-        layoutManager = new GridLayoutManager(this, 2);
+        layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         setVideoList();
 

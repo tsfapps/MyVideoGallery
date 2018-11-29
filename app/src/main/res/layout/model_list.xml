@@ -10,27 +10,42 @@
         app:cardCornerRadius="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    <LinearLayout
+    <RelativeLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 <ImageView
     android:scaleType="centerCrop"
     android:id="@+id/iv_thumb"
-    android:layout_width="match_parent"
-    android:layout_height="120dp"
+    android:layout_width="140dp"
+    android:layout_height="wrap_content"
     android:background="@mipmap/ic_launcher"/>
     <TextView
-        android:padding="10dp"
+        android:layout_toRightOf="@+id/iv_thumb"
+        android:padding="5dp"
         android:textColor="#f9c538"
         android:id="@+id/tv_title"
         android:text="@string/video_title"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        android:background="#000"
+        android:layout_width="match_parent"
+        android:gravity="left"
+        android:layout_height="wrap_content"
+        />
+    <TextView
+        android:layout_below="@+id/tv_title"
+        android:layout_toRightOf="@+id/iv_thumb"
+        android:padding="5dp"
+        android:textColor="#f9c538"
+        android:id="@+id/tv_des"
+        android:text="@string/vid_description"
         android:textSize="12sp"
         android:background="#000"
         android:layout_width="match_parent"
-        android:gravity="center"
+        android:gravity="left"
         android:layout_height="wrap_content"
         />
-    </LinearLayout>
+    </RelativeLayout>
     </android.support.v7.widget.CardView>
 </RelativeLayout>

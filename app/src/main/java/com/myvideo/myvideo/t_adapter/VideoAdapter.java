@@ -51,6 +51,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.videoViewHol
        final VideoModel videoModel = videoModels.get(i);
 
        videoViewHolder.textViewTitle.setText(videoModel.getTitle());
+       videoViewHolder.textViewDes.setText(videoModel.getDescription());
         Glide.with(tContext).load(videoModel.getThumb()).into(videoViewHolder.imageViewThumb);
 
 
@@ -62,16 +63,18 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.videoViewHol
         return videoModels.size();
     }
 
-    public class videoViewHolder extends RecyclerView.ViewHolder{
+    class videoViewHolder extends RecyclerView.ViewHolder{
 
-        public ImageView imageViewThumb;
-        public TextView textViewTitle;
+        ImageView imageViewThumb;
+        TextView textViewTitle;
+        TextView textViewDes;
 
-        public videoViewHolder(@NonNull View itemView) {
+        videoViewHolder(@NonNull View itemView) {
             super(itemView);
 
             imageViewThumb = itemView.findViewById(R.id.iv_thumb);
             textViewTitle = itemView.findViewById(R.id.tv_title);
+            textViewDes = itemView.findViewById(R.id.tv_des);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
