@@ -1,5 +1,7 @@
 package com.myvideo.myvideo.t_activity;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,7 +9,11 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.support.v7.widget.SearchView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import com.myvideo.myvideo.R;
 import com.myvideo.myvideo.t_adapter.VideoAdapter;
@@ -15,6 +21,7 @@ import com.myvideo.myvideo.t_api.ApiClient;
 import com.myvideo.myvideo.t_api.VideoApi;
 import com.myvideo.myvideo.t_model.VideoModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -64,6 +71,47 @@ public class MainActivity extends AppCompatActivity implements VideoAdapter.onVi
             }
         });
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView)menu.findItem(R.id.search).getActionView();
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        searchView.setMaxWidth(Integer.MAX_VALUE);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String textList) {
+
+                textList = textList.toLowerCase();
+                List<VideoModel> myList = new ArrayList<>();
+
+                for (VideoModel model : videoModelList){
+
+                    String vid_name = model.getTitle().toLowerCase();
+                    if (vid_name.contains(textList)){
+                        myList.add(model);
+                    }
+                }
+
+                videoAdapter.filterItem(myList);
+                return false;
+            }
+        });
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

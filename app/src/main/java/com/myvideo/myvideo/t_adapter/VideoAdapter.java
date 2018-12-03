@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide;
 import com.myvideo.myvideo.R;
 import com.myvideo.myvideo.t_model.VideoModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.videoViewHolder> {
@@ -91,5 +92,12 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.videoViewHol
 
         }
     }
+
+    public void filterItem(List<VideoModel> newList){
+        videoModels = new ArrayList<>();
+        videoModels.addAll(newList);
+        notifyDataSetChanged();
+    }
+
 
 }
